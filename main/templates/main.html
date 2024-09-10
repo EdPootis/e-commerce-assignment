@@ -1,10 +1,17 @@
-<h1>Eh-Toko</h1>
+{% load static %}
 
-<h5>Name: </h5>
-<p>{{name}}</p> <!-- Ubah sesuai dengan npm kamu -->
-<h5>Price: </h5>
-<p>{{price}}</p> <!-- Ubah sesuai dengan nama kamu -->
-<h5>Description: </h5>
-<p>{{description}}</p> <!-- Ubah sesuai dengan kelas kamu -->
-<h5>Stock: </h5>
-<p>{{stock}}</p> <!-- Ubah sesuai dengan kelas kamu -->
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Eh-Toko</h1>
+<h2>The Toko to all of your eh-lectronic needs</h2>
+<br></br>
+<h3>{{name}}</h3> 
+<img src="{% static 'usb_to_type_c.jpg' %}">
+
+<h4>Price: Rp{{price}}</h4>
+<p>Description: {{description}}</p>
+<p>Stock: {{stock}} </p>
+
+</body>
+</html>
