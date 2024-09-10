@@ -6,7 +6,10 @@ def show_main(request):
         'name' : 'USB to Type C Cable',
         'price': 1000,
         'description': 'Multipurpose usb to type C cable',
-        'stock': 1
+        'stock': 1,
+        'person_name': 'Edmond Christian',
+        'npm': '2306208363',
+        'class': 'PBP D'
     }
 
     return render(request, "main.html", context)
