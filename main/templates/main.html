@@ -1,5 +1,5 @@
-{% load static %}
-
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <body>
@@ -15,6 +15,37 @@
 <p>Description: {{description}}</p>
 <p>Stock: {{stock}} </p>
 <br><br>
+
+{% if not products %}
+<p> There are no products yet</p>
+{% else %}
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Stock</th>
+    </tr>
+
+    {% for product in products %}
+    <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.stock}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href = "{% url 'main:add_product' %}">
+    <button>Add New Product</button>
+</a>
+
+
 <h4>By {{person_name}} / {{npm}} / {{class}} </h4>
 </body>
 </html>
+{% endblock content %}
