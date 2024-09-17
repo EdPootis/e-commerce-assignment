@@ -25,12 +25,12 @@
 18. Menghubungkan project dengan PWS sesuai dengan panduan websitenya. 
 19. Melakukan push terhadap branch pws dengan `git push pws master`.
 20. Menunggu proses building project oleh PWS dan setelah selesai project dapat diakses melalui http://edmond-christian31-ecommerceassignment.pbp.cs.ui.ac.id/
-(Setiap langkah tersebut tidak saya lakukan sekaligus, melainkan dalam beberapa sesi. Untuk setiap sesi saya mulai dengan `env\Scripts\activate` dan akhiri dengan `deactivate`)
-20. Setelah project dapat terlihat dan benar, saya menambahkan gambar salah satu produk ke dalam `main.html`
-21. Penambahan gambar dilakukan dengan membuat folder baru `/static` pada folder aplikasi `main`, kemudian memasukan gambar ke dalam folder tersebut.
-22. Pada `main.html` saya menambahkan `{% load static %}` di awal dokumen agar gambar di folder `/static` dapat ditemukan
-23. Lalu saya juga mengganti beberapa teks dan formatting pada `main.html`
-24. Terakhir saya melakukan push terhadap github dan WPS. (Pada website PWS, project mungkin belum menampilkan tampilan terbaru sebab build yang gagal karena PWS yang sedang bermasalah)
+(Setiap langkah tersebut tidak saya lakukan sekaligus, melainkan dalam beberapa sesi. Untuk setiap sesi saya mulai dengan `env\Scripts\activate` dan akhiri dengan `deactivate`).
+21. Setelah project dapat terlihat dan benar, saya menambahkan gambar salah satu produk ke dalam `main.html`.
+22. Penambahan gambar dilakukan dengan membuat folder baru `/static` pada folder aplikasi `main`, kemudian memasukan gambar ke dalam folder tersebut.
+23. Pada `main.html` saya menambahkan `{% load static %}` di awal dokumen agar gambar di folder `/static` dapat ditemukan
+24. Lalu saya juga mengganti beberapa teks dan formatting pada `main.html`
+25. Terakhir saya melakukan push terhadap github dan WPS. (Pada website PWS, project mungkin belum menampilkan tampilan terbaru sebab build yang gagal karena PWS yang sedang bermasalah)
 
 
 **Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas `html`.**
