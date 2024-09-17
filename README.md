@@ -95,13 +95,12 @@ def show_xml(request):
 
 17. Melakukan import fungsi tersebut ke dalam `main/urls.py` dan di dalamnya menambahkan _path url_ agar terdapat halaman baru untuk melihat object dalam XML.
 18. Untuk menambahkan fungsi yang menampilkan data dalam JSON, serupa dengan langkah-langkah pembuatan tampilan dalam XML pada langkah 14-15, dengan perbedaannya berada pada nama fungsinya menjadi `show_json` dan mengembalikan data berupa "json", yang kemudian dilanjutkan dengan routing.
-19. Selanjutnya adalah proses menambahkan fungsi `show_xml_by_id` dan `show_json_by_id`. Prosesnya serupa dengan `show_xml` dan `show_json`, namun variabel `data` pada kedua fungsi tersebut diubah menjadi:
+19. Selanjutnya adalah proses menambahkan fungsi `show_xml_by_id` dan `show_json_by_id`. Prosesnya serupa dengan `show_xml` dan `show_json`, namun variabel `data` pada kedua fungsi tersebut diubah sehingga data yang diambil hanya yang memiliki id yang sesuai.
 
 ```python
     data = Product.objects.filter(pk = id)
 ```
 
-Melalui perubahan variabel data tersebut, data yang diambil hanya yang memiliki id yang sesuai.
 20. Selanjutnya, menambahkan _path_ kedua fungsi tersebut sehingga dapat dilihat. _Path_-nya sama dengan _path_ jika ingin melihat keseluruhan object, namun ditambahkan dengan `/[id]` dengan `[id]` diubah oleh id object yang ingin dilihat secara satu-persatu.
 21. Dengan itu 3 checklist pertama diselesaikan. Selanjutnya adalah checklist untuk menjawab pertanyaan-pertanyaan, di mana sumbernya adalah slide yang berada pada kelas PBP, pembelajaran di kelas, dan berbagai referensi lain di internet.
 
