@@ -101,7 +101,7 @@ def show_xml(request):
     data = Product.objects.filter(pk = id)
 ```
 
-    Melalui perubahan variabel data tersebut, data yang diambil hanya yang memiliki id yang sesuai.
+Melalui perubahan variabel data tersebut, data yang diambil hanya yang memiliki id yang sesuai.
 21. Selanjutnya, menambahkan _path_ kedua fungsi tersebut sehingga dapat dilihat. _Path_-nya sama dengan _path_ jika ingin melihat keseluruhan object, namun ditambahkan dengan `/[id]` dengan `[id]` diubah oleh id object yang ingin dilihat secara satu-persatu.
 22. Dengan itu 3 checklist pertama diselesaikan. Selanjutnya adalah checklist untuk menjawab pertanyaan-pertanyaan, di mana sumbernya adalah slide yang berada pada kelas PBP, pembelajaran di kelas, dan berbagai referensi lain di internet.
 
