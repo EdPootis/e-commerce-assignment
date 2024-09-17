@@ -56,29 +56,26 @@ Django disebut sebagai ORM (Object Relational Mapping) karena Django menyimpan d
 
 ## Tugas 3
 
-<b>Jelaskan mengapa kita memerlukan _data delivery_ dalam pengimplementasian sebuah platform?
-</b>
-<p>
-_Data delivery_ dibutuhkan dalam sebuah platform agar platform tersebut dapat bersifat responsif terhadap pengguna, dengan kata lain _data delivery_ memungkinkan sebuah platform seperti suatu website untuk menampilkan tampilan yang sesuai dan terus berubah menurut input user dan data yang berada pada basis data/_database_ server websitenya. Tanpa data delivery, tampilan website mungkin terlihat statik ataupun tidak dapat diakses sama sekali sehingga memberikan kesan yang buruk terhadap pengguna platform tersebut</p>
+**Jelaskan mengapa kita memerlukan *data delivery* dalam pengimplementasian sebuah platform?**
+*Data delivery* dibutuhkan dalam sebuah platform agar platform tersebut dapat bersifat responsif terhadap pengguna, dengan kata lain *data delivery* memungkinkan sebuah platform seperti suatu website untuk menampilkan tampilan yang sesuai dan terus berubah menurut input user dan data yang berada pada basis data/*database* server websitenya. Tanpa data delivery, tampilan website mungkin terlihat statik ataupun tidak dapat diakses sama sekali sehingga memberikan kesan yang buruk terhadap pengguna platform tersebut.
 
-<b>Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
-</b>
-<p>Menurut saya keduanya memiliki fungsinya masing-masing dan tidak ada yang secara keseluruhan lebih baik, namun jika saya harus memilih menggunakan antara keduanya saya akan memilih JSON karena format data dalam JSON yang lebih mudah dipahami dan lebih ringkas dibandingkan dengan XML. Alasan JSON lebih populer dibandingkan XML menurut saya yang utama adalah karena proses _parsing_ data lebih cepat dilakukan dalam format JSON, ini dikarenakan formatnya yang lebih sedikit dan ringkas, tidak seperti format XML yang memiliki _tag_ dan struktur yang lebih kompleks.</p>
+**Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?**
+Menurut saya keduanya memiliki fungsinya masing-masing dan tidak ada yang secara keseluruhan lebih baik, namun jika saya harus memilih menggunakan antara keduanya saya akan memilih JSON karena format data dalam JSON yang lebih mudah dipahami dan lebih ringkas dibandingkan dengan XML. Alasan JSON lebih populer dibandingkan XML menurut saya yang utama adalah karena proses *parsing* data lebih cepat dilakukan dalam format JSON, ini dikarenakan formatnya yang lebih sedikit dan ringkas, tidak seperti format XML yang memiliki *tag* dan struktur yang lebih kompleks.
 
-<b>Jelaskan fungsi dari method 'is_valid()' pada form Django dan mengapa kita membutuhkan method tersebut?</b>
-<p>Sesuai namanya, method 'is_valid()' pada form Django berfungsi untuk melakukan validasi atas setiap isian dari _field-field_ yang ada pada form tersebut. Jika datanya valid maka method tersebut akan mengembalikan nilai boolean 'true'. Contoh isian form yang valid adalah isian yang tidak kosong pada field yang bersifat wajib diisi. Method ini diperlukan pada form Django agar input pengguna sesuai yang developer inginkan dan juga menghindari input yang dapat mengganggu kinerja program.</p>
+**Jelaskan fungsi dari method 'is_valid()' pada form Django dan mengapa kita membutuhkan method tersebut?**
+Sesuai namanya, method 'is_valid()' pada form Django berfungsi untuk melakukan validasi atas setiap isian dari *field-field* yang ada pada form tersebut. Jika datanya valid maka method tersebut akan mengembalikan nilai boolean 'true'. Contoh isian form yang valid adalah isian yang tidak kosong pada field yang bersifat wajib diisi. Method ini diperlukan pada form Django agar input pengguna sesuai yang developer inginkan dan juga menghindari input yang dapat mengganggu kinerja program.
 
-<b>Mengapa kita membutuhkan 'csrf_token' saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan 'csrf_token' pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?</b>
-<p>'csrf_token' dibutuhkan dalam sebuah form di Django agar saat melakukan submit form ataupun melakukan request lain, kegiatan tersebut dapat dipastikan berasal dari pengguna yang sudah diautentikasi dan bukan oleh pihak ketiga yang _malicious_. 'csrf_token' sebuah pengguna dibuat secara acak untuk setiap sesi pengguna sehingga sulit untuk ditebak. Jika kita tidak menggunakan 'csrf_token', maka form yang disubmit atau request lainnya tidak dapat diautentikasi sehingga bisa saja bukan pengguna yang sebenarnya yang melakukan request atau mengsubmit form tersebut, melainkan orang lain yang ingin menyerang dengan identitas sebagai pengguna sebenarnya. Penyerang ini kemudian dapat melakukan request seperti mengsubmit isi form yang salah, atau melakukan request data penting pengguna asli.</p>
+**Mengapa kita membutuhkan 'csrf_token' saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan 'csrf_token' pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?</**
+'csrf_token' dibutuhkan dalam sebuah form di Django agar saat melakukan submit form ataupun melakukan request lain, kegiatan tersebut dapat dipastikan berasal dari pengguna yang sudah diautentikasi dan bukan oleh pihak ketiga yang *malicious*. 'csrf_token' sebuah pengguna dibuat secara acak untuk setiap sesi pengguna sehingga sulit untuk ditebak. Jika kita tidak menggunakan 'csrf_token', maka form yang disubmit atau request lainnya tidak dapat diautentikasi sehingga bisa saja bukan pengguna yang sebenarnya yang melakukan request atau mengsubmit form tersebut, melainkan orang lain yang ingin menyerang dengan identitas sebagai pengguna sebenarnya. Penyerang ini kemudian dapat melakukan request seperti mengsubmit isi form yang salah, atau melakukan request data penting pengguna asli.
 
-<b>Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step</b>
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step**
 
 1. Sebelum memulai proses pembuatan form, saya menambahkan 'github/workflows/deploy.yml' terlebih dahulu agar kedepannya saat saya melakukan push project terhadap github, dilakukan juga push terhadap pws. Lalu saya juga mengecilkan gambar yang sebelumnya saya tambahkan di tugas 2.
 2. Lalu saya menambahkan sebuah template atau kerangka yang akan digunakan sebagai template halaman-halaman yang berada di website saya
 3. Penambahannya adalah dengan membuat direktori 'templates' pada root folder dan mengisinya dengan file 'base.html' yang berisi beberapa '{% block ... % }'. '{% block ... % }' merupakan bagian html yang dapat diganti oleh konten-konten tertentu di halaman html yang sudah jadi.
 4. Selanjutnya pada direktori project 'the_eh_toko' saya menambahkan direktori tersebut ke dalam variabel 'TEMPLATES' pada 'settings.py'. 
 5. Setelah itu, saya mengubah 'base.html' yang berada pada direktori 'main/templates/' sehingga menggunakan kerangka dari 'base.html' yang sebelumnya sudah dibuat, dengan menambahkan '"{% extends 'base.html' %}"' dan mengapit isinya dengan '{% block content %}' dan '{% endblock content %}'
-6. Sebelum membuat form, saya menambahkan terlebih dahulu atribut 'id' pada class object 'Product' pada 'models.py' yang akan disimpan di database. Atribut 'id' yang dibuat menggunakan uuid64 agar bersifat acak dan tidak dapat ditebak (aman), fungsi atribut ini agar setiap object atau data memiliki _unique identifier_
+6. Sebelum membuat form, saya menambahkan terlebih dahulu atribut 'id' pada class object 'Product' pada 'models.py' yang akan disimpan di database. Atribut 'id' yang dibuat menggunakan uuid64 agar bersifat acak dan tidak dapat ditebak (aman), fungsi atribut ini agar setiap object atau data memiliki *unique identifier*
 7. Setelah menambahkan atribut pada 'models.py', saya menjalankan 'makemigrations' dan 'migrate' untuk melakukan pengubahan pada basis data.
 8. Pada saat memulai pembuatan form, saya membuat terlebih dahulu 'forms.py' di direktori 'main' yang akan membuat struktur formulir yang nantinya akan ditampilkan. Isinya adalah sebuah class object baru, 'NewProductForm dan inner class 'Meta' yang berisi mengenai object yang akan diterima dan isian mengenai atribut object. (Import class 'Product' tentunya dilakukan).
 9. Pada file 'views.py' di direktori 'main', melakukan import 'redirect', 'NewProductForm', dan 'Product'. Lalu membuat fungsi 'add_product' dengan parameter _request_ yang berisi prosedur pembuatan form dan penyimpanan isi dari form.
@@ -89,11 +86,13 @@ _Data delivery_ dibutuhkan dalam sebuah platform agar platform tersebut dapat be
 14. Berikutnya, membuat 4 fungsi pada 'views.py' untuk melihat objek-objek yang sudah dibuat dalam format XML, JSON, XML _by ID_, dan JSON _by ID_.
 15. Diawali dengan melakukan import 'HttpResponse' dan 'Serializer' pada 'views.py'.
 16. Membuat fungsi 'show_xml' dengan parameter _request_ yang mengembalikan data semua object 'Product' yang diubah sehingga terbaca dalam format XML. Dengan kode sebagai berikut: 
+
 '''python
 def show_xml(request):
     data = Product.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type = "application/xml")
 '''
+
 17. Melakukan import fungsi tersebut ke dalam 'main/urls.py' dan di dalamnya menambahkan _path url_ agar terdapat halaman baru untuk melihat object dalam XML.
 18. Untuk menambahkan fungsi yang menampilkan data dalam JSON, serupa dengan langkah-langkah pembuatan tampilan dalam XML pada langkah 14-15, dengan perbedaannya berada pada nama fungsinya menjadi 'show_json' dan mengembalikan data berupa "json", yang kemudian dilanjutkan dengan routing.
 19. Selanjutnya adalah proses menambahkan fungsi 'show_xml_by_id' dan 'show_json_by_id'. Prosesnya serupa dengan 'show_xml' dan 'show_json', namun variabel 'data' pada kedua fungsi tersebut diubah menjadi:
