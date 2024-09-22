@@ -116,3 +116,82 @@ def show_xml(request):
 
 <b>4. JSON/[id]</b>
 <img src="main/static/Screenshot_JSON_by_ID.png">
+
+
+## Tugas 4
+
+**Apa perbedaan antara `HttpResponseRedirect()` dan `redirect()`**
+-
+
+**Jelaskan cara kerja penghubungan model `Product` dengan `User`!**
+-
+
+**Apa perbedaan antara *authentication* dan *authorization*, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.**
+-
+
+**Bagaimana Django mengigat pengguna yang telah login? Jelaskan kegunaan lain dari *cookies* dan apakah semua cookies aman digunakan?**
+-
+
+**Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step* (bukan hanya sekedar mengikuti tutorial)**
+1. Melakukan import `UserCreationForm` dan `messages` pada `main/views.py`. `UserCreationForm` mengandung form default yang disediakan django untuk melakukan pendaftaran pengguna, sementara `messages` untuk menghasilkan pesan.
+2. Membuat fungsi `register` pada `main/views` untuk menghasilkan halaman di mana pengguna dapat mendaftarkan akun, di dalam fungsinya juga ada return untul melakukan redirect ke halaman utama setelah melakukan pendaftaran/register.
+3. Membuat template baru bernama `register.html` pada `main/templates` yang akan menjadi template halaman pendaftaran pengguna. Pada template akan terdapat form dalam bentuk tabel, dan message dalam bentuk list. Message yang dapat ditampilkan adalah pembuatan akun berhasil atau gagal.
+4. Mengimport `register` ke dalam `main/urls.py` dan melakukan *routing* halaman register yang telah dibuat.
+5. Melakukan import `AuthenticationForm`, `authenticate`, dan `login`. pada `main/views` untuk membuat form login user.
+6. Membuat fungsi `login_user` untuk membuat fungsi yang menghasilkan halaman login pengguna. Di dalamnya digunakan `AuthenticationForm` yang mengecek input username dan password pengguna, jika benar dan valid maka akan diredirect ke halaman utama dan pengguna logged in dalam website.
+7. Membuat template baru `login.html` pada `main/templates` yang akan menjadi halaman login pengguna. Kemudian dilakukan routing terhadapnya di dalam `main/urls.py`
+8. Melakukan import `logout` kedalam `main/views.py` dan membuat fungsi `logout_user` untuk melakukan logout pengguna.
+9. Menambahkan tombol untuk melakukan logout di halaman utama `main.html`, jika ditekan maka akan menjalankan fungsi untuk logout. Kemudian melakukan routing terhadap `logout_user` pada `main/urls.py`. Saya juga menambahkan sedikit spasi antara button logout dan menambahkan produk baru dengan menambahkan tag `<br>`.
+10. Menambahkan kode `from django.contrib.auth.decorators import login_required` untuk mengimport `login_required`. Setelah itu menambahkan decorator `@login_required(login_url='/login')` pada fungsi `show_main`. Ini bertujuan agar seorang pengguna harus logged in terlebih dahulu jika ingin ke halaman utama toko, jika tidak logged in maka akan diredirect ke halaman login. 
+11. Setelah itu, saya mengetes terlebih dahulu website saat itu. Saya juga menambahkan beberapa button untuk kembali ke halaman sebelumnya.
+12. Selanjutnya untuk menggunakan *cookies*, mengimport `datetime`, `HttpResponseRedirect`, dan `reverse`. Setelah itu, menambahkan kode ke dalam fungsi `login_user`. Di dalam kode tersebut, akan dibuat *cookie* `last_login` yang menyimpan data berupa waktu pengguna login di saat itu.
+13. Menambahkan key `last_login` ke dalam context pada fungsi `show_main` yang isinya berupa *cookie* dengan nama yang sama.
+14. Memodifikasi kode fungsi `logout_user` agar saat pengguna keluar *cookie* `last_login` mereka dihapus.
+15. Untuk menampilkan info seperti username pengguna yang logged in, menambahkan `main.html` dengan kode:
+
+```html
+...
+<h3>Hi, {{username}}</h3>
+...
+```
+
+16. Lalu, menambahkan key `username` pada `main/views.py` yang memiliki nilai username dari pengguna yang sedang logged in. Caranya dengan menambahkan fungsi `show_main` kode berikut:
+
+```python
+...
+    'username': request.user.username,
+...
+``` 
+
+17. Selanjutnya, menghubungkan model `Product` dengan `User`. Dimulai dengan melakukan import `User` ke dalam `main/models.py`. Lalu, menambahkan atribut `user` dengan potongan kode `user = models.ForeignKey(User, on_delete=models.CASCADE)`.
+18. Menghubungkan model `Product` dan `User` dengan meng*assign* nilai dari atribut `user` dengan `User` yang sedang logged in. Caranya dengan memodifikasi kode pada fungsi `add_product` di `main/views.py` menjadi
+
+```python
+...
+    if form.is_valid() and request.method == "POST":
+        new_product = form.save(commit=False)
+        new_product.user = request.user
+        new_product.save()
+        return redirect('main:show_main')
+...
+```
+
+19. Memfilter tampilan data `Product` yang ditampilkan dengan menyaringnya sehingga hanya dimunculkan jika atribut `user`nya bernilai sama dengan `User` yang sedang logged in dengan memodifikasi fungsi `show_main` dengan:
+
+```python
+...
+    products = Product.objects.filter(user=request.user)
+...
+```
+
+20. Melakukan migrasi model dengan `python manage.py makemigrations` dan `python manage.py migrate`. Sementara itu semua objek `Product` yang ada akan dihubungkan ke user yang sama/default terlebih dahulu. Sekarang setiap pengguna hanya dapat melihat product yang ditambahkannya.
+21. Melakukan import `os` pada `the_eh_toko/settings.py` dan memodifikasi kode agar mode debug Django hanya berjalan saat development (lokal) dengan:
+
+```python
+...
+PRODUCTION = os.getenv("PRODUCTION", False)
+DEBUG = not PRODUCTION
+...
+```
+
+22. Selanjutnya saya menambahkan produk untuk 2 akun pengguna agar terdapat 3 produk masing-masing, untuk mengerjakan checklist 2.

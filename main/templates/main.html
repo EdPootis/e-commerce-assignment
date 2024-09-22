@@ -7,7 +7,8 @@
 <h2>The Toko to all of your eh-lectronic needs!</h2>
 
 <br>
-<h4>Example product:</h4>
+<h2>Hi, {{username}}</h2>
+<h3>Example product:</h3>
 <h3>{{name}}</h3> 
 <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/data-cable/usb-type-c-cable/h/x/k/18-watt-model-no-c031-c-tecno-original-imagnjzznaztv5yp.jpeg?q=90&crop=false", width="300", height="300">
 
@@ -43,7 +44,11 @@
 <a href = "{% url 'main:add_product' %}">
     <button>Add New Product</button>
 </a>
-
+<br><br>
+<a href="{% url 'main:logout' %}">
+    <button>Logout</button>
+</a>
+<h5>Last login: {{ last_login }}</h5>
 
 <h4 style="padding-bottom:10px;">By {{person_name}} / {{npm}} / {{class}} </h4>
 </body>
