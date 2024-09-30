@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from main.forms import NewProductForm
 from main.models import Product
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
@@ -32,13 +32,15 @@ def show_main(request):
     return render(request, "main.html", context)
 
 def add_product(request):
-    form = NewProductForm(request.POST or None)
+    form = NewProductForm(request.POST, request.FILES or None)
 
-    if form.is_valid() and request.method == "POST":
-        new_product = form.save(commit=False)
-        new_product.user = request.user
-        new_product.save()
-        return redirect('main:show_main')
+    if request.method == 'POST':
+        form = NewProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_product = form.save(commit=False)
+            new_product.user = request.user
+            new_product.save()
+            return redirect('main:show_main')
     
     context = {'form': form}
     return render(request, "add_product.html", context)
@@ -94,3 +96,21 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def edit_product(request, id):
+    # Dapatkan objek product yang ingin diedit
+    product = Product.objects.get(pk = id)
+
+    form = NewProductForm(request.POST or None, instance = product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+    
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    product = Product.objects.get(pk = id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))

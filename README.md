@@ -207,3 +207,33 @@ Screenshot pengguna 1 dengan 3 produknya
 
 Screenshot pengguna 2 dengan 3 produknya
 <img src="main/static/Screenshot_pengguna2.png">
+
+## Tugas 4
+
+**Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!**
+
+holder
+
+**Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!**
+
+holder2
+
+**Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!**
+
+holder3
+
+**Jelaskan konsep flex box dan grid layout beserta kegunaannya!**
+
+holder4
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!**
+
+1. Langkah pertama adalah untuk menambahkan fitur edit produk terlebih dahulu.
+2. Menambahkan fungsi `edit_product` pada `main/views.py` yang akan mengembalikan *context* berupa formulir untuk halaman edit produk dan menyimpan perubahan yang ada pada formulir terhadap objek produk.
+3. Membuat berkas HTML baru `edit_product.html` pada `main/templates` yang akan menjadi template halaman edit produk dan kemudian melakukan routing terhadapnya pada `main/urls.py`.
+4. Menambahkan tombol untuk mengedit produk di `main/templates/main.html` di tabel yang menampilankan produk. Dengan ini maka tombol edit akan muncul di baris setiap produk.
+5. Memulai menambahkan fitur menghapus produk dengan menambahkan fungsi `delete_product` pada `main/views.py`. Fungsi ini memiliki parameter *request* dan *id*, saat fungsi ini dilakukan maka objek produk dengan *id* yang sesuai akan dihapus dari *database*.
+6. Melakukan routing untuk respons fungsi menghapus produk pada `main/urls.py`. 
+7. Menambahkan tombol untuk menghapus produk di `main/templates/main.html` sehingga saat dipencet akan menghapus produk di tabel dan redirect kembali ke halaman utama sehingga ter*refresh* dan produk hilang.
+8. Menambahkan imagefield dengan menambahkan folder untuk *media* pada `the_eh_toko/settings.py`, kemudian melakukan routing pada `the_eh_toko/urls.py`
+9. 

@@ -2,7 +2,7 @@
 {% block content %}
 <h1 style="background-color:#a2d9f5; border-radius:25px"> Add product</h1>
 
-<form method = "POST" >
+<form method = "POST" enctype='multipart/form-data'>
     {% csrf_token %}
     <table style="padding-bottom:10px; width:50%; margin:auto; text-align:center;">
         {{ form.as_table }}

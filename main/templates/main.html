@@ -30,10 +30,37 @@
 
     {% for product in products %}
     <tr>
+        <td style="border: 1px solid #150c8e">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" 
+                style="display: block; width:100%; max-width:80px; max-height:80px"
+                alt="Image unavailable"/>
+        {% else %}
+            <img src="./media/default.png" 
+                style="display: block; width:100%; max-width:80px; max-height:80px"
+                alt="Image unavailable"/>
+        {% endif %}
+        </td>
         <td style="border: 1px solid #150c8e">{{product.name}}</td>
         <td style="border: 1px solid #150c8e">{{product.price}}</td>
         <td style="border: 1px solid #150c8e">{{product.description}}</td>
         <td style="border: 1px solid #150c8e">{{product.stock}}</td>
+        <td style="border: 1px solid #150c8e">
+            <a href="{% url 'main:edit_product' product.pk %}">
+                <button>
+                    Edit
+                </button>
+            </a>
+        </td>
+        <td style="border: 1px solid #150c8e">
+            <a href="{% url 'main:delete_product' product.pk %}">
+                <button>
+                    Delete
+                </button>
+            </a>
+        </td>
+
+
     </tr>
     {% endfor %}
 </table>
