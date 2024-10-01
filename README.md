@@ -208,7 +208,7 @@ Screenshot pengguna 1 dengan 3 produknya
 Screenshot pengguna 2 dengan 3 produknya
 <img src="main/static/Screenshot_pengguna2.png">
 
-## Tugas 4
+## Tugas 5
 
 **Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!**
 

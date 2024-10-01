@@ -16,10 +16,10 @@
         </p>
         <div class="">
         {% if product.image %}
-                <img class="h-auto max-w-lg rounded-lg mx-auto dark:shadow-gray-800 shadow-sm h-auto max-w-xs" src="{{ product.image.url }}" 
+                <img class="h-auto max-w-lg rounded-lg mx-auto dark:shadow-gray-800 shadow-sm size-52" src="{{ product.image.url }}" 
                     alt="Image unavailable"/>
         {% else %}
-                <img class="h-auto max-w-lg rounded-lg mx-auto dark:shadow-gray-800 shadow-sm h-auto max-w-xs" src="{% static 'image/default.png' %}" 
+                <img class="h-auto max-w-lg rounded-lg mx-auto dark:shadow-gray-800 shadow-sm size-40" src="{% static 'image/default.png' %}" 
                     alt="Default image unavailable"/>
         {% endif %}
         </div>
