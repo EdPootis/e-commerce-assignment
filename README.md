@@ -212,19 +212,38 @@ Screenshot pengguna 2 dengan 3 produknya
 
 **Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!**
 
-holder
+Jika terdapat beberapa CSS selector untuk suatu elemen HTML, *style* yang akan diambil ditentukan oleh prioritas yang ada. Prioritas tersebut dari yang paling diprioritaskan adalah *Inline styles*, *ID selector*, *Class selector*, dan *Element selector*. *Inline styles* adalah *style* dari sebuah elemen HTML yang langsung dituliskan di dalam tag elemen HTML tersebut. *ID selector* memiliki format `#idname {...}` pada file atau script CSS, *Class selector* memiliki format `.classname {...}`, sementara untuk format `Element selector` memiliki format `elementname {...}` . Contoh:
+```html
+<h1 class="class1" id="title" style="font-size:70">Judul Dengan Ukuran Font 70</h1>
+```
+Pada contoh tersebut, ukuran tulisan tersebut akan berukuran 70 karena style *inline* yang meng*override style* ukuran font default untuk elemen tipe h1, *class* class1, dan *id* title. Selain itu, penentuan *style* lainnya seperti *color* dan *font-family* akan ditentukan berdasarkan *id*, lalu jika tidak ditentukan disana maka akan ditentukan oleh *class* dan *element*nya, dan jika masih tidak ditemukan maka akan digunakan *default style* dari browser atau aplikasi penampil HTML. Selain itu ada juga properti `!important` yang akan meng*override* urutan prioritas yang sebelumnya telah disebut jika digunakan.
 
 **Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!**
 
-holder2
+*Responsive design* merupakan konsep yang penting dalam pengembangan aplikasi web karena dengannya, dipastikan tampilan/desain suatu website disesuaikan dengan perangkat yang mengakses website tersebut. Jika *responsive design* tidak diterapkan pada sebuah website, kemungkinan besar tampilan website tersebut akan terlihat berantakan jika ditampilkan pada perangkat atau browser yang memiliki resolusi berbeda dari *developer* website, dan apabila tampilan website berantakan maka tentunya fungsionalitas website dapat terganggu, contohnya sebuah teks yang keluar dari *containernya* sehingga sulit dibaca. Ini terjadi karena browser atau perangkat melakukan penyesuaian secara otomatis yang umumnya hanya berupa pergeseran dan pengecilan elemen HTML. Jadi *responsive design* meningkatkan aksesibilitas website dan pengalaman pengguna/*user experience* dalam menggunakan suatu website.
+Contoh website yang belum menerapkan *responsive design* adalah website `http://aren.cs.ui.ac.id/sda/` sebagaimana pada gambar, sementara salah satu website yang sudah menerapkan *responsive design* adalah `https://scele.cs.ui.ac.id` yang desainnya disesuaikan terhadap perangkat atau browser yang membukanya.
+
+<img src="main/static/not_responsive.png">
 
 **Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!**
 
-holder3
+*margin*, *border*, dan *padding* merupakan komponen dari *CSS box model*. Selain ketiga itu ada juga *content* yang menjadi isi dari suatu elemen html tersebut. *Padding* adalah area yang mengelilingi *content* sebelum dibatasi oleh *border*. *Border* adalah sebuah garis yang membatasi area *padding* dengan *margin*. *Margin* adalah area yang berada di luar *border* dan elemen html tersebut. *Border* umumnya cukup mudah dibedakan karena hanya sebuah garis perbatasan, melainkan *margin* dan *padding*lah yang istilahnya bermakna serupa. Perbedaan utamanya adalah area *padding* termasuk sebagai area di dalam elemennya sehingga *padding* berguna untuk mengatur *spacing* di dalam elemennya dll, sebaliknya, *margin* termasuk pada area luar elemen HTMLnya sehingga margin dapat digunakan untuk mengatur *spacing* elemennya dengan elemen lain. Contoh cara untuk mengimplementasikannya adalah:
+```css
+div {
+  width: 320px;
+  height: 50px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 30px;
+}
+```
+Pada contoh tersebut, elemen tipe div pada HTML akan memiliki *border* garis solid (garis tidak putus-putus biasa) setebal 5px dengan warna abu-abu, lalu spasi elemen yang di dalamnya (*content*) akan berjarak 10px dengan *border* abu-abu tadi. Di luar *border* elemennya akan berjarak 30px dalam segala sisi dari elemen lainnya (dengan asumsi margin elemen lainnya tidak lebih besar dari 30px, jika iya maka jaraknya sebesar elemen lain tersebut).
+
 
 **Jelaskan konsep flex box dan grid layout beserta kegunaannya!**
 
-holder4
+*flex box* dan *grid layout* adalah tipe sistem *layout* yang terdapat dalam CSS. Pada sebuah tampilan website, sistem *layout*lah yang kan mengatur tata peletakan elemen-elemennya. *Flexbox* adalah sistem *layout* yang memiliki 1 dimensi, yang berarti tata peletakan hanya dilakukan pada 1 arah, seperti penambahan elemen hanya ke kanan, bawah, dll. sampai memenuhi sebuah *flex* kontainer. *Flexbox* digunakan saat kita ingin mengisi suatu kontainer yang ukurannya dapat berubah-ubah/tidak diketahui dengan elemen tertentu, contohnya pada elemen yang fleksibel dan 1 dimensi, *navigation bar*.
+*Grid layout* adalah sistem *layout yang menata elemen-elemennya dalam 2 dimensi, yakni secara horizontal dan vertikal. Pada *layout* ini, area HTML akan terbagi-bagi menjadi berbagai kolom dan baris selayaknya sebuah tabel. Dengan *layout* ini, peletakan elemen akan menjadi lebih leluasa karena dapat menempatkannya ke dalam "kotak" baris dan kolom tertentu. *Grid layout* digunakan jika *layout* suatu HTML kompleks dan/atau elemen-elemennya perlu diatur secara spesifik.
 
 **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!**
 
@@ -246,6 +265,7 @@ holder4
 15. Melakukan konfigurasi file *static* untuk CSS dll pada `the_eh_toko/settings.py`.
 16. Membuat file `global.css` pada `static/css` di *root* folder dan menghubungkan `base.html` dengannya.
 17. Mengisi file `global.css` untuk menyesuaikan tampilan website.
-18. Melakukan styling pada `login.html`, `register.html`. // TAMBAHINAFHAGIYSFA
+18. Melakukan styling pada seluruh template yang ada seperti mengatur warna dan menambahkan elemen. 
 19. Membuat file `templates/card_info.html` sebagai template tampilan berbagai info dalam kartu nantinya. Selanjutnya membuat file `templates/card_product.html` yang nantinya akan menjadi template tampilan produk dalam sebuah kartu.
-20. Menambahkan gambar pada folder baru `static/image/no-product` di *root* folder.
+20. Menambahkan gambar pada folder baru `static/image/no-product.png` di *root* folder. Selain itu juga mengedit `main.html` agar memunculkan tampilan yang berbeda jika tidak ada produk yang terdaftar.
+21. Selanjutnya mengedit `card_product.html` sehingga dapat memunculkan gambar, dan jika tidak ada akan menampilkan sebuah gambar default.
