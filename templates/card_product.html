@@ -1,3 +1,4 @@
+{% load static %}
 <div class="relative break-inside-avoid">
   <div class="absolute top-2 z-10 left-1/2 -translate-x-1/2 flex items-center -space-x-2">
     <div class="w-[3rem] h-8 bg-gray-200 rounded-md opacity-80 -rotate-90"></div>
@@ -31,7 +32,7 @@
                 style="display: block; width:100%; max-width:80px; max-height:80px"
                 alt="Image unavailable"/>
     {% else %}
-            <img src="% static 'image/no-product.png' %" 
+            <img src="{% static 'image/default.png' %}" 
                 style="display: block; width:100%; max-width:80px; max-height:80px"
                 alt="Image unavailable"/>
     {% endif %}</div>
