@@ -1,7 +1,8 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.templatetags.static import static
+# from /the_eh_toko/settings import
 # Create your models here.
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -10,4 +11,4 @@ class Product(models.Model):
     description = models.TextField()
     stock = models.IntegerField()
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
-    image = models.ImageField(default='default.png', blank=True, upload_to="./media/")
+    image = models.ImageField(blank=True, upload_to="./media/")
