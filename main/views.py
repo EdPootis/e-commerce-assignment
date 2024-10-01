@@ -35,12 +35,14 @@ def add_product(request):
     form = NewProductForm(request.POST, request.FILES or None)
 
     if request.method == 'POST':
-        form = NewProductForm(request.POST, request.FILES)
+        form = NewProductForm(request.POST, request.FILES or None)
         if form.is_valid():
             new_product = form.save(commit=False)
             new_product.user = request.user
             new_product.save()
             return redirect('main:show_main')
+    else:
+        form = NewProductForm()
     
     context = {'form': form}
     return render(request, "add_product.html", context)
