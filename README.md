@@ -235,5 +235,17 @@ holder4
 5. Memulai menambahkan fitur menghapus produk dengan menambahkan fungsi `delete_product` pada `main/views.py`. Fungsi ini memiliki parameter *request* dan *id*, saat fungsi ini dilakukan maka objek produk dengan *id* yang sesuai akan dihapus dari *database*.
 6. Melakukan routing untuk respons fungsi menghapus produk pada `main/urls.py`. 
 7. Menambahkan tombol untuk menghapus produk di `main/templates/main.html` sehingga saat dipencet akan menghapus produk di tabel dan redirect kembali ke halaman utama sehingga ter*refresh* dan produk hilang.
-8. Menambahkan imagefield dengan menambahkan folder untuk *media* pada `the_eh_toko/settings.py`, kemudian melakukan routing pada `the_eh_toko/urls.py`
-9. 
+8. Menambahkan gambar untuk setiap produk dengan menambahkan folder *media* pada `the_eh_toko/settings.py`, kemudian melakukan routing pada `the_eh_toko/urls.py`
+9. Selain itu juga mengedit template dan menambahkan tambahan pada tag *form*, yaitu `enctype='multipart/form-data`. 
+10. Menambahkan tampilan untuk gambar produk dan *style*nya pada `main/templates/main.html`.
+10. Menambahkan `request.FILES` sebagai parameter `NewProductForm` pada fungsi `add_product` dan `edit_product`. Dengan ini maka gambar tiap produk dapat ditampilkan, dan jika tidak memberikan gambar maka diberikan gambar `default.png`.
+11. Selanjutnya adalah melakukan kustomisasi *template* HTML dengan CSS framework Tailwind.
+12. Pertama-tama ditambahkan `<script src="https://cdn.tailwindcss.com">` pada `template/base.html` pada *root* folder untuk menyambungkan *template* dengan script Tailwind.
+13. Menambahkan *Navigation Bar/navbar* dengan membuat file `templates/navbar.html` pada *root* folder dan mengisinya dengan sebuah *navbar*.
+14. Melakukan meng*include navbar* tersebut ke dalam `main.html`, `add_product.html`, dan `edit_product.html` pada folder `main`
+15. Melakukan konfigurasi file *static* untuk CSS dll pada `the_eh_toko/settings.py`.
+16. Membuat file `global.css` pada `static/css` di *root* folder dan menghubungkan `base.html` dengannya.
+17. Mengisi file `global.css` untuk menyesuaikan tampilan website.
+18. Melakukan styling pada `login.html`, `register.html`. // TAMBAHINAFHAGIYSFA
+19. Membuat file `templates/card_info.html` sebagai template tampilan berbagai info dalam kartu nantinya. Selanjutnya membuat file `templates/card_product.html` yang nantinya akan menjadi template tampilan produk dalam sebuah kartu.
+20. Menambahkan gambar pada folder baru `static/image/no-product` di *root* folder.

@@ -18,7 +18,7 @@ def show_main(request):
 
     context = {
         'username': request.user.username,
-        'name' : 'USB to Type C Cable',
+        'name' : 'Edmond Christian',
         'price': 1000,
         'description': 'Multipurpose usb to type C cable',
         'stock': 1,
@@ -104,6 +104,7 @@ def edit_product(request, id):
     form = NewProductForm(request.POST or None, instance = product)
 
     if form.is_valid() and request.method == "POST":
+        form = NewProductForm(request.POST, request.FILES, instance = product)
         form.save()
         return HttpResponseRedirect(reverse('main:show_main'))
     
