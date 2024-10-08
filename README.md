@@ -1,8 +1,10 @@
 
 **Edmond Christian / 2306208363 / PBP D**
+[Link Deployment PWS](http://edmond-christian31-ecommerceassignment.pbp.cs.ui.ac.id)
+<Details>
+<Summary>Tugas 2</Summary>
 
 ## Tugas 2
-
 **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step**
 
 1. Membuat folder dengan nama project saya di komputer dan menyambungkannya dengan git.
@@ -52,7 +54,9 @@ Menurut saya, karena Django merupakan framework yang populer (sehingga terdapat 
 Django disebut sebagai ORM (Object Relational Mapping) karena Django menyimpan data sebagai objek di Python, yang kemudian objek-objek tersebut yang berupa data dapat dipetakan terhadap tabel-tabelnya pada sebuah relational database umumnya seperti SQL. Selanjutnya, jika ingin mengolah atau melakukan hal terkait database dapat dilakukan menggunakan prinsip OOP (Object Oriented Programming) pada datanya.
 
 
-
+</Details>
+<Details>
+<Summary>Tugas 3</Summary>
 
 ## Tugas 3
 
@@ -117,6 +121,10 @@ def show_xml(request):
 <b>4. JSON/[id]</b>
 <img src="main/static/Screenshot_JSON_by_ID.png">
 
+</Details>
+
+<Details>
+<Summary>Tugas 4</Summary>
 
 ## Tugas 4
 
@@ -208,6 +216,11 @@ Screenshot pengguna 1 dengan 3 produknya
 Screenshot pengguna 2 dengan 3 produknya
 <img src="main/static/Screenshot_pengguna2.png">
 
+</Details>
+
+<Details>
+<Summary>Tugas 5</Summary>
+
 ## Tugas 5
 
 **Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!**
@@ -269,3 +282,39 @@ Pada contoh tersebut, elemen tipe div pada HTML akan memiliki *border* garis sol
 19. Membuat file `templates/card_info.html` sebagai template tampilan berbagai info dalam kartu nantinya. Selanjutnya membuat file `templates/card_product.html` yang nantinya akan menjadi template tampilan produk dalam sebuah kartu.
 20. Menambahkan gambar pada folder baru `static/image/no-product.png` di *root* folder. Selain itu juga mengedit `main.html` agar memunculkan tampilan yang berbeda jika tidak ada produk yang terdaftar.
 21. Selanjutnya mengedit `card_product.html` sehingga dapat memunculkan gambar, dan jika tidak ada akan menampilkan sebuah gambar default.
+</Details>
+<Details>
+<Summary>Tugas 6</Summary>
+
+## Tugas 6
+
+**Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!**
+
+1
+
+**Jelaskan fungsi dari penggunaan `await` ketika kita menggunakan `fetch()`! Apa yang akan terjadi jika kita tidak menggunakan `await`?**
+
+2
+
+**Mengapa kita perlu menggunakan decorator `csrf_exempt` pada *view* yang akan digunakan untuk AJAX `POST`?**
+
+3
+
+**Pada tutorial PBP minggu ini, pembersihan data *input* pengguna dilakukan di belakang (*backend*) juga. Mengapa hal tersebut tidak dilakukan di *frontend* saja?**
+
+4
+
+**Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step* (bukan hanya sekadar mengikuti tutorial)!**
+
+1. Sebelum menambahkan AJAX, menambahkan dulu error message jika salah login dengan memberikan conditional pada fungsi fungsi view `login_user` pada `main/views.py`.
+2. Mengimport `csrf_exempt` dan `require_POST` ke dalam `views.py`.
+3. Menambahkan fungsi `add_product_ajax` pada `views.py` yang akan memproses penambahan produk dengan AJAX.
+4. Melakukan routing terhadap fungsi `add_product` pada `main/urls.py`
+5. Mengganti cara menampilkan data produk dengan `fetch()` API, menghapus context mengenai product pada show_main, dan memberi filter pada show_json.
+6. Mengganti bagian kode HTML yang menunjukkan kartu produk dengan sebuah div kosong. Di bawah sebelum `{% endblock content %}` menambahkan script untuk menunjukkan kartu produk menggunakan `fetch()`.
+7. Membuat modal sebagai form untuk menambahkan produk menggunakan AJAX dengan menambahkan elemen html.
+8. Menambahkan script yang akan mengatur bagaimana modal bekerja dan script untuk menambahkan product melalui form yang berada pada form.
+9. Menambahkan fungsi strip tags untuk melindungi website dari *XSS* dan method `clean_name` dan `clean_description` untuk menghilangkan kemungkinan *XSS* dapat terjadi. Selain itu menggunakan fungsi `form.checkValidity` dan `form.reportValidity` agar *field* pada form seperti gambar tidak boleh kosong saat menambahkan produk.
+10. Menambahkan `DOM Purify.sanitize` agar data "kotor" yang sebelumnya ditambahkan tidak melakukan scriptnya.
+
+</Details>
