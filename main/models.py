@@ -11,4 +11,4 @@ class Product(models.Model):
     description = models.TextField()
     stock = models.IntegerField()
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
-    image = models.ImageField(blank=True, upload_to="./media/")
+    image = models.ImageField(blank=False, upload_to="./media/", null=False)
