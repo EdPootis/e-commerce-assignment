@@ -1,5 +1,6 @@
 
 **Edmond Christian / 2306208363 / PBP D**
+
 [Link Deployment PWS](http://edmond-christian31-ecommerceassignment.pbp.cs.ui.ac.id)
 <Details>
 <Summary>Tugas 2</Summary>
@@ -290,19 +291,20 @@ Pada contoh tersebut, elemen tipe div pada HTML akan memiliki *border* garis sol
 
 **Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!**
 
-1
+Penggunaan JavaScript memiliki banyak manfaat dalam pengembangan aplikasi web, namun yang utama adalah memungkinkan pembuatan halaman web yang dinamis dan interaktif. Dengan JavaScript suatu website tidak statis yang memerlukan *reload* setiap kali terdapat perubahan pada halamannya, melainkan contohnya dengan AJAX pembaruan data dapat terjadi tanpa melakukan reload untuk keseluruhan halaman web (asinkronus), hal ini juga dapat dilakukan terhadap perubahan style/CSS ataupun elemen HTML lainnya. Animasi dan efek visual interaktif yang menarik juga dimungkinkan dengan adanya JavaScript dan CSS. Dalam fungsionalitas, JavaScript memungkinkan beberapa proses tertentu seperti validasi isi form pada sisi *frontend*, *lazy loading*, dan halaman web yang *event-driven*.
 
 **Jelaskan fungsi dari penggunaan `await` ketika kita menggunakan `fetch()`! Apa yang akan terjadi jika kita tidak menggunakan `await`?**
 
-2
+Fungsi dari `await` adalah untuk menunggu respon dari fungsi `fetch()` yang dilakukan, tanpanya kode akan terus berlanjut walaupun nilai dari variabel yang mengandung produk masih kosong karena pengambilan data dari basis data belum selesai. `fetch()` merupakan fungsi asinkronus yang akan mengembalikan sebuah *promise*, *promise* inilah yang akan mengisi variabel dari data yang ingin diambil. Proses penyelesaian fungsi `fetch()` tidak instan karena harus mengambil datanya dari basis data server. Dengan adanya `await`, penjalanan kode akan menunggu agar fungsi `fetch()` selesai dan *promise* terpenuhi sehingga variabel yang berisi data tidak kosong dan selanjutnya dapat dikelola. Jika `await` tidak digunakan maka saat variabel yang berisi data dari `fetch()` ingin digunakan maka isinya dapat masih berupa *promise* yang bukan data yang sebenarnya.
+
 
 **Mengapa kita perlu menggunakan decorator `csrf_exempt` pada *view* yang akan digunakan untuk AJAX `POST`?**
 
-3
+Decorator csrf_exempt digunakan pada *view* yang menggunakan AJAX POST karena pada request AJAX POST tidak disertakan dengan csrf_token yang di*generate* saat itu, sehingga agar request tetap diterima dan dijalankan diperkukan decorator csrf_exempt tersebut. Jika tidak maka request tersebut akan tetap dilakukan cek CSRF, namun karena tidak memiliki csrf_token yang valid maka requestnya akan ditolak dari pihak server. Hal ini hanya diperlukan pada AJAX POST, karena pada request POST seperti pada `add-product` csrf_token disertakan melalui kode `{% csrf_token %}` dalam melakukan requestnya sehingga tidak perlu di*exempt*. 
 
 **Pada tutorial PBP minggu ini, pembersihan data *input* pengguna dilakukan di belakang (*backend*) juga. Mengapa hal tersebut tidak dilakukan di *frontend* saja?**
 
-4
+Pembersihan data *input* tidak cukup dilakukan di *frontend* saja karena sisi *frontend* website dapat dimanipulasi menggunakan *developer tools* yang berada pada browser setiap pengguna, karena itu diperlukan juga pembersihan data pada *backend*. Pada tutorial, data yang kotor (yang melalukan XSS) awalnya dapat tersimpan ke dalam basis data sehingga tiap kali objek tersebut di*load* scriptnya akan terjadi terus menerus. Namun pembersihan tersebut masih termasuk dalam *frontend*, dan jika ada pengguna yang ingin mengakses data melalui `/json` atau `/xml` maka akan ada data yang kotor. Jadi pembersihan data di *backend* juga diperlukan agar keseluruhan aplikasi/web aman, dengan pembersihan data di *backend* keamanan dan integritas kinerja website juga lebih terjamin, karena pada *frontend* pengguna dapat memanipulasi apapun, tetapi pada *backend* diperlukan otorisasi sehingga tidak sembarang pengguna dapat memanipulasinya.
 
 **Jelaskan bagaimana cara kamu mengimplementasikan *checklist* di atas secara *step-by-step* (bukan hanya sekadar mengikuti tutorial)!**
 
@@ -310,11 +312,11 @@ Pada contoh tersebut, elemen tipe div pada HTML akan memiliki *border* garis sol
 2. Mengimport `csrf_exempt` dan `require_POST` ke dalam `views.py`.
 3. Menambahkan fungsi `add_product_ajax` pada `views.py` yang akan memproses penambahan produk dengan AJAX.
 4. Melakukan routing terhadap fungsi `add_product` pada `main/urls.py`
-5. Mengganti cara menampilkan data produk dengan `fetch()` API, menghapus context mengenai product pada show_main, dan memberi filter pada show_json.
+5. Mengganti cara menampilkan data produk dengan `fetch()` API, menghapus context mengenai product pada show_main, dan memberi filter pada `show_json` dan `show_xml` agar hanya menampilkan produk dari user yang *logged in*.
 6. Mengganti bagian kode HTML yang menunjukkan kartu produk dengan sebuah div kosong. Di bawah sebelum `{% endblock content %}` menambahkan script untuk menunjukkan kartu produk menggunakan `fetch()`.
 7. Membuat modal sebagai form untuk menambahkan produk menggunakan AJAX dengan menambahkan elemen html.
 8. Menambahkan script yang akan mengatur bagaimana modal bekerja dan script untuk menambahkan product melalui form yang berada pada form.
-9. Menambahkan fungsi strip tags untuk melindungi website dari *XSS* dan method `clean_name` dan `clean_description` untuk menghilangkan kemungkinan *XSS* dapat terjadi. Selain itu menggunakan fungsi `form.checkValidity` dan `form.reportValidity` agar *field* pada form seperti gambar tidak boleh kosong saat menambahkan produk.
+9. Menambahkan fungsi `strip_tags` untuk melindungi website dari *XSS* dan method `clean_name` dan `clean_description` untuk menghilangkan kemungkinan *XSS* dapat terjadi. Pada `views.py`, menambahkan kode untuk melakukan pengecekan data setelah `strip_tags` tidak boleh kosong (agar produk tidak ada yang nama atau deskripsinya kosong setelah di*strip*). Selain itu menggunakan fungsi `form.checkValidity` dan `form.reportValidity` agar *field* pada form seperti gambar tidak boleh kosong saat menambahkan produk.
 10. Menambahkan `DOM Purify.sanitize` agar data "kotor" yang sebelumnya ditambahkan tidak melakukan scriptnya.
 
 </Details>
